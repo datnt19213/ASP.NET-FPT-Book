@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.container{
+    list-style-type: none;
+    display: block;
+    background-color: rgb(215, 226, 230);
+}
+
+.container .container-top{
+    display: flex;
+    background-color: white;
+    padding: 10px 0px 10px 0px;
+    justify-content: space-between;
+    padding: 20px 5% 20px 5%;
+    height: 100px;
+}
+
+.container .container-top .logo{
+    margin-top: calc(50px - 25px);
+}
+
+.container .container-top .search-bar{
+    display: flex;
+}
+
+.container .container-top .search-bar .search{
+    width: 350px;
+    height: 35px;
+    outline: none;
+    border: none;
+    font-size: 15px;
+    margin-top: calc(50px - (35px/2));
+}
+
+.container .container-top .search-bar .search-btn{
+    width: 30px;
+    height: 30px;
+    margin-top: calc(50px - 15px);
+}
+
+.container .container-top .cart{
+    margin-top: calc(50px - 15px);
+}
+
+.container .container-top .signin{
+    display: flex;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.container .container-top .signin .sign-in{
+    margin-top: calc(50px - 15px);
+}
+
+.container .container-top .signin .cart-lb{
+    margin: calc(50px - 8px) 15px calc(50px - 8px) 15px;
+    color: black;
+    text-decoration: none;
+}
+
+.container .container-top .logo, .search-bar .search-btn, .cart, .signin .sign-in, .cart-lb{
+    cursor: pointer;
+}
+
+.container .container-down{
+    background-color: white;
+}
+
+.container .container-down .menubar{
+    display: flex;
+    /* justify-content: center; */
+    justify-content: space-between;
+    padding: calc(50px - 8px) 30% calc(50px - 8px) 30%;
+    list-style-type: none;
+    font-size: 16px;
+    
+}
+
+.container .container-down .menubar .menu-item{
+    text-decoration: none;
+    color: black;
+}
+
+.container .container-down .menubar .menu-item:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.ft-copyright{
+    text-align: center;
+    font-size: 20px;
+    margin: 5px 0px 5px 0px;
+    color: gray;
+}

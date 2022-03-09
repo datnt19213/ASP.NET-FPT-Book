@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - FPT Book</title>
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/Site")
+    <link href="../Content/indexcss.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="container">
+        <div class="container-top">
+            <img src="~/Content/images/fptbook logo.png" alt="" class="logo" style="width: 250px; height: 50px;">
+            @Html.ActionLink(" ", "Index", "Home", new { area = "" })
+            <div class="search-bar">
+                <input type="search" name="" id="" class="search" placeholder="Search"><img src="~/Content/images/search.png" alt="" class="search-btn">
+            </div>
+            <img src="~/Content/images/cart.png" alt="" class="cart" style="width: 30px; height: 30px;">
+            <div class="signin">
+                <img src="~/Content/images/user.png" alt="" class="sign-in" style="width: 30px; height: 30px;">
+                <p class="cart-lb">
+                    @Html.ActionLink("Sign in", "Login", "Account", new { area = "" }, new { @class = "cart-lb" })
+                </p>
+            </div>
+        </div>
+        <div class="container-down">
+            <ul class="menubar">
+                <li class="menu-item">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "menu-item" })</li>
+
+                <li>@Html.ActionLink("Best Sellers", "Index", "Home", new { area = "" }, new { @class="menu-item" })</li>
+                <li>@Html.ActionLink("New Realeases", "Index", "Home", new { area = "" }, new { @class = "menu-item" })</li>
+                <li>@Html.ActionLink("Business", "Index", "Home", new { area = "" }, new { @class = "menu-item" })</li>
+                <li>@Html.ActionLink("Computing", "Index", "Home", new { area = "" }, new { @class = "menu-item" })</li>
+                <li>@Html.ActionLink("Martketing", "Index", "Home", new { area = "" }, new { @class = "menu-item" })</li>
+            </ul>
+        </div>
+    </div>
+
+    @RenderBody()
+
+    <footer>
+        <p class="ft-copyright"> &copy; @DateTime.Now.Year Copyright FPT Book</p>
+    </footer>
+    @RenderSection("scripts", required: false)
+</body>
+</html>
