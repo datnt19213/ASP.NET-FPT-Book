@@ -1,0 +1,45 @@
+﻿@model FPTBookProject.Models.Category
+@{
+    ViewBag.Title = "EditCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="wrapper">
+
+    @using (Html.BeginForm("EditCategory", "ManageCategory", FormMethod.Post, new { @class = "login-form", role = "form" }))
+    {
+
+        @Html.AntiForgeryToken()
+        @*Html.ValidationSummary("", new { @class = "text-danger" })*@
+        <div class="header">
+            <h2 class="header-login">Update Category</h2>
+        </div>
+
+        <div class="login-items">
+
+            <div class="username-password-items">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.CategoryId)
+
+                <p>@Html.LabelFor(m => m.CategoryName, new { @class = "header-input-item" })</p>
+                @Html.TextBoxFor(m => m.CategoryName, new { @class = "input-item" })
+                @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
+
+                <p>@Html.LabelFor(m => m.Description, new { @class = "header-input-item" })</p>
+                @Html.TextBoxFor(m => m.Description, new { @class = "input-item" })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+
+            <div style="margin-bottom:5%;" class="btn-item">
+                <button type="submit" class="submit-btn1">Update</button>
+            </div>
+            <div class="btn-item">
+                <button class="submit-btn23">
+                    @Html.ActionLink("Cancel", "Index", "ManageCategory")
+                </button>
+            </div>
+        </div>
+
+    }
+</div>
