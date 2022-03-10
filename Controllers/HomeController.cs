@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FPTBookProject.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,23 +9,52 @@ namespace FPTBookProject.Controllers
 {
     public class HomeController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
+
         public ActionResult Index()
         {
-            return View();
+            var book = db.Books.ToList();
+            return View(book);
         }
 
-        public ActionResult About()
+        public ActionResult BestSellers()
         {
-            ViewBag.Message = "Your application description page.";
+            var book = db.Books.ToList();
+            ViewBag.Message = "Best sellers book page.";
 
-            return View();
+            return View(book);
         }
 
-        public ActionResult Contact()
+        public ActionResult NewReleased()
         {
-            ViewBag.Message = "Your contact page.";
+            var book = db.Books.ToList();
+            ViewBag.Message = "New releases books page.";
 
-            return View();
+            return View(book);
+        }
+
+        public ActionResult Business()
+        {
+            var book = db.Books.ToList();
+            ViewBag.Message = "Business books page.";
+
+            return View(book);
+        }
+
+        public ActionResult Computing()
+        {
+            var book = db.Books.ToList();
+            ViewBag.Message = "Computing books page.";
+
+            return View(book);
+        }
+
+        public ActionResult Marketing()
+        {
+            var book = db.Books.ToList();
+            ViewBag.Message = "Marketing books page.";
+
+            return View(book);
         }
     }
 }

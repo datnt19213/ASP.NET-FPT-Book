@@ -1,0 +1,65 @@
+﻿@model FPTBookProject.Models.Account
+@{
+    ViewBag.Title = "Edit_Infor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="wrapper">
+
+    @using (Html.BeginForm("Edit_Infor", "Account", FormMethod.Post, new { @class = "login-form", role = "form" }))
+    {
+
+        @Html.AntiForgeryToken()
+        <div class="header">
+            <h2 class="header-login">Edit Information</h2>
+        </div>
+
+        <div class="login-items">
+
+            <div class="username-password-items">
+                @Html.HiddenFor(model => model.UserName)
+
+                @Html.LabelFor(model => model.FullName, new { @class = "header-input-item" })
+                @Html.TextBoxFor(model => model.FullName, new { @class = "input-item" })
+                <p> @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "badge badge-danger" })</p>
+
+
+                @Html.LabelFor(model => model.Password, new { @class = "header-input-item" })
+                @Html.TextBoxFor(model => model.Password, new { @class = "input-item" })
+                <p>@Html.ValidationMessageFor(model => model.Password, "", new { @class = "badge badge-danger" })</p>
+
+                @Html.LabelFor(model => model.ConfirmPass, new { @class = "header-input-item" })
+                @Html.TextBoxFor(model => model.ConfirmPass, new { @class = "input-item" })
+                <p> @Html.ValidationMessageFor(model => model.ConfirmPass, "", new { @class = "badge badge-danger" })</p>
+
+                @Html.LabelFor(model => model.PhoneNumber, new { @class = "header-input-item" })
+                @Html.TextBoxFor(model => model.PhoneNumber, new { @class = "input-item" })
+                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+
+
+                @Html.LabelFor(model => model.Address, new { @class = "header-input-item" })
+                @Html.TextBoxFor(model => model.Address, new { @class = "input-item" })
+                <p> @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })</p>
+
+
+                @Html.LabelFor(model => model.Email, new { @class = "header-input-item" })
+                @Html.TextBoxFor(model => model.Email, new { @class = "input-item" })
+                <p>   @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })</p>
+
+            </div>
+
+            <div style="margin-bottom:5%;" class="btn-item">
+                <button type="submit" class="submit-btn1">Update Information</button>
+            </div>
+            <div class="btn-item">
+                <button class="submit-btn23">
+                    @Html.ActionLink("Cancel", "Index", "Home")
+                </button>
+
+            </div>
+        </div>
+
+    }
+</div>
+
+

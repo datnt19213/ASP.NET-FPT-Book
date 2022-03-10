@@ -2,30 +2,149 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+@model IEnumerable<FPTBookProject.Models.Book>
+<div id="wrapper">
+    <div class="CSSgal">
+
+        <!-- Don't wrap targets in parent -->
+        <s id="s1"></s>
+        <s id="s2"></s>
+        <s id="s3"></s>
+        <s id="s4"></s>
+
+        <div class="slider">
+
+            @{
+                int i = 0;
+                foreach (var book in Model)
+                {
+                    i = i+1;
+                    if (i == 1)
+                    {
+                        <div style="background:#5b8;">
+                            <img class="slide" src="~/Content/Book images/@book.Img" alt="" />
+                            <h2></h2>
+                        </div>
+                    }
+                    if (i == 2)
+                    {
+                        <div style="background: #85b;">
+                            <img class="slide" src="~/Content/Book images/@book.Img" alt="" />
+                            <h2></h2>
+                        </div>
+                    }
+                    if (i == 3)
+                    {
+                        <div style="background: #e95;">
+                            <img class="slide" src="~/Content/Book images/@book.Img" alt="" />
+                            <h2></h2>
+                        </div>
+                    }
+                    if (i == 4)
+                    {
+                        <div style="background: #e59;">
+                            <img class="slide" src="~/Content/Book images/@book.Img" alt="" />
+                            <h2></h2>
+                        </div>
+                    }
+                    if(i == 5)
+                    {
+                        break;
+                    }
+                }
+            }
+        </div>
+
+        <div class="prevNext">
+            <div><a href="#s4"></a><a href="#s2"></a></div>
+            <div><a href="#s1"></a><a href="#s3"></a></div>
+            <div><a href="#s2"></a><a href="#s4"></a></div>
+            <div><a href="#s3"></a><a href="#s1"></a></div>
+        </div>
+
+        <div class="bullets">
+            <a href="#s1"></a>
+            <a href="#s2"></a>
+            <a href="#s3"></a>
+            <a href="#s4"></a>
+        </div>
+    </div>
+</div>
+<div class="book-block">
+    <h2 class="book-lb">Best Sellers Books</h2>
+    <div class="book-ls">
+        @foreach (var book in Model)
+        {
+            <div class="book">
+                <img src="~/Content/Book images/@book.Img" alt="" class="book-img">
+                <p class="infor">Title: @book.BookName</p>
+                <p class="infor">Author: @book.Author.AuthorName</p>
+                <p class="infor">Price: @book.Price</p>
+                <a href="@Url.Action("Add", "Cart", book)" class="add-cart-btn">
+
+                    <img src="~/Content/images/add-to-cart.png" alt="" style="width: 30px; height: 30px;"><p class="addcart-btn">Add to cart</p>
+                </a>
+            </div>
+        }
+    </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<div class="book-block">
+    <h2 class="book-lb">Newly Released Books</h2>
+    <div class="book-ls">
+        @foreach (var book in Model)
+        {
+            <div class="book">
+                <img src="~/Content/Book images/@book.Img" alt="" class="book-img">
+                <p class="infor">Title: @book.BookName</p>
+                <p class="infor">Author: @book.Author.AuthorName</p>
+                <p class="infor">Price: @book.Price</p>
+                <a href="@Url.Action("Add", "Cart", book)" class="add-cart-btn">
+
+                    <img src="~/Content/images/add-to-cart.png" alt="" style="width: 30px; height: 30px;"><p class="addcart-btn">Add to cart</p>
+                </a>
+            </div>
+        }
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+</div>
+
+<div class="book-block">
+    <h2 class="book-lb">Book You Might Like</h2>
+    <div class="book-ls">
+        @foreach (var book in Model)
+        {
+            <div class="book">
+                <img src="~/Content/Book images/@book.Img" alt="" class="book-img">
+                <p class="infor">Title: @book.BookName</p>
+                <p class="infor">Author: @book.Author.AuthorName</p>
+                <p class="infor">Price: @book.Price</p>
+                <a href="@Url.Action("Add", "Cart", book)" class="add-cart-btn">
+
+                    <img src="~/Content/images/add-to-cart.png" alt="" style="width: 30px; height: 30px;"><p class="addcart-btn">Add to cart</p>
+                </a>
+            </div>
+        }
+
+        </div>
+</div>
+
+
+<div class="book-block">
+    <h2 class="book-lb">Book You Might Like</h2>
+    <div class="book-ls">
+        @foreach (var book in Model)
+        {
+            <div class="book">
+                <img src="~/Content/Book images/@book.Img" alt="" class="book-img">
+                <p class="infor">Title: @book.BookName</p>
+                <p class="infor">Author: @book.Author.AuthorName</p>
+                <p class="infor">Price: @book.Price</p>
+                <a href="@Url.Action("Add", "Cart", book)" class="add-cart-btn">
+
+                    <img src="~/Content/images/add-to-cart.png" alt="" style="width: 30px; height: 30px;">
+                    <p class="addcart-btn">Add to cart</p>
+                </a>
+            </div>
+        }
     </div>
 </div>

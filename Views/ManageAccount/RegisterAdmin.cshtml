@@ -1,70 +1,68 @@
 ﻿@model FPTBookProject.Models.Account
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "RegisterAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-@{
-    if (ViewBag.Error != null)
-    {
-        <script type="text/javascript">
-            alert('@ViewBag.error');
-        </script>
-    }
-}
 
 <div class="wrapper">
 
-    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "login-form", role = "form" }))
+    @using (Html.BeginForm("RegisterAdmin", "ManageAccount", FormMethod.Post, new { @class = "login-form", role = "form" }))
     {
 
         @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
         <div class="header">
-            <h2 class="header-login">Register</h2>
+            <h2 class="header-login">Register New Account</h2>
         </div>
 
         <div class="login-items">
 
             <div class="username-password-items">
-                <p>  @Html.LabelFor(m => m.UserName, new { @class = "header-input-item" })</p>
+                <p>@Html.LabelFor(m => m.UserName, new { @class = "header-input-item" })</p>
                 @Html.TextBoxFor(m => m.UserName, new { @class = "input-item" })
                 @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
 
-                <p>  @Html.LabelFor(m => m.FullName, new { @class = "header-input-item" }) </p>
+                <p>@Html.LabelFor(m => m.FullName, new { @class = "header-input-item" })</p>
                 @Html.TextBoxFor(m => m.FullName, new { @class = "input-item" })
                 @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
 
 
-                <p> @Html.LabelFor(m => m.Password, new { @class = "header-input-item" })</p>
+                <p>@Html.LabelFor(m => m.Password, new { @class = "header-input-item" })</p>
                 @Html.PasswordFor(m => m.Password, new { @class = "input-item" })
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
 
-                <p>   @Html.LabelFor(m => m.ConfirmPass, new { @class = "header-input-item" }) </p>
+                <p>@Html.LabelFor(m => m.ConfirmPass, new { @class = "header-input-item" })</p>
                 @Html.PasswordFor(m => m.ConfirmPass, new { @class = "input-item" })
                 @Html.ValidationMessageFor(model => model.ConfirmPass, "", new { @class = "text-danger" })
 
 
-                <p>  @Html.LabelFor(m => m.PhoneNumber, new { @class = "header-input-item" })</p>
+                <p>@Html.LabelFor(m => m.PhoneNumber, new { @class = "header-input-item" })</p>
                 @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "input-item" })
                 @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
 
 
-                <p> @Html.LabelFor(m => m.Address, new { @class = "header-input-item" })</p>
+                <p>@Html.LabelFor(m => m.Address, new { @class = "header-input-item" })</p>
                 @Html.TextBoxFor(m => m.Address, new { @class = "input-item" })
                 @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
 
 
-                <p>   @Html.LabelFor(m => m.Email, new { @class = "header-input-item" })</p>
+                <p>@Html.LabelFor(m => m.Email, new { @class = "header-input-item" })</p>
                 @Html.TextBoxFor(m => m.Email, new { @class = "input-item" })
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
 
+                <p>@Html.LabelFor(model => model.StatusCode, "Role", new { @class = "header-input-item" })</p>
+                @Html.RadioButtonFor(m => m.StatusCode, "0") <span>Customer</span>
+                @Html.RadioButtonFor(m => m.StatusCode, "1") <span>Admin</span>
+                @Html.ValidationMessageFor(model => model.StatusCode, "", new { @class = "text-danger" })
             </div>
 
             <div style="margin-bottom:5%;" class="btn-item">
                 <button type="submit" class="submit-btn1">Register</button>
             </div>
             <div class="btn-item">
-                <button type="submit" class="submit-btn23">
-                    @Html.ActionLink("Cancel", "Index", "Home")
+                <button class="submit-btn23">
+                    @Html.ActionLink("Cancel", "Index", "ManageAccount")
                 </button>
             </div>
         </div>

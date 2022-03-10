@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Marketing";
+}
+
+@model IEnumerable<FPTBookProject.Models.Book>
+<div class="book-block">
+    <h2 class="book-lb">Marketing Books</h2>
+    <div class="book-ls">
+        @foreach (var book in Model)
+        {
+            <div class="book">
+                <img src="~/Content/Book images/@book.Img" alt="" class="book-img">
+                <p class="infor">Title: @book.BookName</p>
+                <p class="infor">Author: @book.Author.AuthorName</p>
+                <p class="infor">Price: @book.Price</p>
+                <a href="@Url.Action("Add", "Cart", book)" class="add-cart-btn">
+
+                    <img src="~/Content/images/add-to-cart.png" alt="" style="width: 30px; height: 30px;"><p class="addcart-btn">Add to cart</p>
+                </a>
+            </div>
+        }
+    </div>
+</div>
