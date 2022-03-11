@@ -1,0 +1,43 @@
+﻿@model FPTBookProject.Models.Author
+
+@{
+    ViewBag.Title = "ManageAuthor";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="wrapper">
+
+    @using (Html.BeginForm("AddAuthor", "ManageAuthor", FormMethod.Post, new { @class = "login-form", role = "form" }))
+    {
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="header">
+            <h2 class="header-login">Add New Author</h2>
+        </div>
+
+        <div class="login-items">
+
+            <div class="username-password-items">
+                <p>@Html.LabelFor(m => m.AuthorName, new { @class = "header-input-item" })</p>
+                @Html.TextBoxFor(m => m.AuthorName, new { @class = "input-item" })
+                @Html.ValidationMessageFor(model => model.AuthorName, "", new { @class = "text-danger" })
+
+                <p>@Html.LabelFor(m => m.Description, new { @class = "header-input-item" })</p>
+                @Html.TextBoxFor(m => m.Description, new { @class = "input-item" })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+
+            <div style="margin-bottom:5%;" class="btn-item">
+                <button type="submit" class="submit-btn1">Add</button>
+            </div>
+            <div class="btn-item">
+                <button class="submit-btn23">
+                    @Html.ActionLink("Cancel", "Index", "ManageAuthor")
+                </button>
+            </div>
+        </div>
+
+    }
+</div>
