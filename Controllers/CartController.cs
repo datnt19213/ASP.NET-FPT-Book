@@ -10,15 +10,18 @@ namespace FPTBookProject.Controllers
     public class CartController : Controller
     {
         // GET: Cart
+        private const string carts = "cart";
+        // GET: Cart
         ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
+            var cart = Session[carts];
             if (Session["UserName"] != null)
             {
                 int condition = Convert.ToInt32(Session["Count"]);
                 if (condition > 0)
                 {
-                    return View((List<BookCart>)Session["cart"]);
+                    return View((List<BookCart>)cart);
                 }
                 else
                 {
@@ -29,11 +32,11 @@ namespace FPTBookProject.Controllers
             {
                 return RedirectToAction("Log_in", "Account");
             }
-
         }
 
         public ActionResult Add(BookCart book)
         {
+
             if (Session["cart"] == null)
             {
                 List<BookCart> li = new List<BookCart>();
@@ -66,11 +69,10 @@ namespace FPTBookProject.Controllers
 
         public ActionResult DeleteItem(BookCart item)
         {
-
             List<BookCart> li = (List<BookCart>)Session["cart"];
-            li.RemoveAll(x => x.BookName == item.BookName);
+            li.RemoveAll(x => x.BookId == item.BookId);
             Session["cart"] = li;
-            Session["count"] = Convert.ToInt32(Session["count"]) - 1;
+            Session["count"] = Convert.ToInt32(Session["count"]) - item.quantity1;
             return RedirectToAction("Index", "Cart");
         }
 
@@ -80,9 +82,7 @@ namespace FPTBookProject.Controllers
             {
                 string username = Session["UserName"].ToString();
                 var user = db.Accounts.Where(x => x.UserName.Equals(username)).FirstOrDefault();
-
                 return View(user);
-
             }
             else
             {
@@ -91,6 +91,7 @@ namespace FPTBookProject.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult MakeOrder(string name, string address, int phone, int total)
         {
             if (Session["UserName"] == null)
@@ -101,6 +102,7 @@ namespace FPTBookProject.Controllers
             {
                 if (ModelState.IsValid)
                 {
+
                     Order order = new Order();
                     var user = Session["UserName"].ToString();
                     order.UserName = user;
@@ -126,15 +128,18 @@ namespace FPTBookProject.Controllers
                         var book = db.Books.Where(x => x.BookId == item.BookId).FirstOrDefault();
                         book.Quantity = book.Quantity - item.quantity1;
                         db.SaveChanges();
+
                     }
                     Session.Clear();
                     Session["UserName"] = user;
+                    Session["success"] = $"Order successfull- total:{order.TotalPrice}" +
+                                 $" The book will delivery to address:{order.Addressdilivery} next 5 days.";
                     return RedirectToAction("Index", "Home");
                 }
-
             }
             return RedirectToAction("Index", "Home");
 
         }
+
     }
 }

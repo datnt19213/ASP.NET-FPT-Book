@@ -17,7 +17,38 @@ namespace FPTBookProject.Controllers
             return View(book);
         }
 
-        public ActionResult BestSellers()
+        [HttpPost]
+        public ActionResult Index(string searchingstring)
+        {
+            List<Book> data = new List<Book>();
+            data = db.Books.Where(x => x.BookName.Contains(searchingstring)).ToList();
+
+            if (data == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View(data);
+        }
+
+            /*
+            [HttpPost]
+            public ActionResult Search(string searchingstring)
+            {
+                List<Book> book = new List<Book>();
+                book = db.Books.Where(x => x.BookName.Contains(searchingstring)).ToList();
+
+                if (book == null)
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return View(book);
+                }
+            }
+            */
+            public ActionResult BestSellers()
         {
             var book = db.Books.ToList();
             ViewBag.Message = "Best sellers book page.";

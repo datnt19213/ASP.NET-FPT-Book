@@ -8,6 +8,7 @@
     @*Scripts.Render("~/bundles/modernizr")*@
     <link href="../Content/indexcss.css" rel="stylesheet" />
     <link href="../Content/slidecss.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/bootstrap")
 
 </head>
 <body>
@@ -21,7 +22,10 @@
                 <div class="search-bar">
                     @Html.TextBox("searchingstring", "", new { @class = "search", type = "text", placeholder = "Search" })
                     @*<input type="search" name="" id="" class="search" placeholder="Search">*@
-                    <img src="~/Content/images/search.png" alt="" class="search-btn">
+                    <a href="@Url.Action("Search","Home")">
+                        <button style="border: none;"><img src="~/Content/images/search.png" alt="" class="search-btn"></button>
+                    </a>
+                    
                 </div>
             }
                 @if (Session["UserName"] != null)
@@ -34,7 +38,7 @@
                         <a href="@Url.Action("Log_out", "Account")">
                             <img src="~/Content/images/user.png" alt="" class="sign-in" style="width: 30px; height: 30px;">
                             <p class="cart-lb">
-                                @Html.ActionLink($"HI, {Session["UserName"]} ", "Edit_Infor", "Account")
+                                @Html.ActionLink($"HI, {Session["UserName"]} ", "Edit_Infor", "Account", new { area = "" }, new { @class = "cart-lb" })
                                 @Html.ActionLink("Sign out", "Log_out", "Account", new { area = "" }, new { @class = "cart-lb" })
                             </p>
                         </a>
