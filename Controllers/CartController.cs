@@ -37,34 +37,32 @@ namespace FPTBookProject.Controllers
         public ActionResult Add(BookCart book)
         {
 
-            if (Session["cart"] == null)
-            {
-                List<BookCart> li = new List<BookCart>();
-                book.quantity1 = 1;
-                li.Add(book);
-                Session["cart"] = li;
-                ViewBag.cart = li.Count();
-                Session["count"] = 1;
-            }
-            else
-            {
-                List<BookCart> li = (List<BookCart>)Session["cart"];
-                book.quantity1 = 1;
-                li.Add(book);
-                Session["cart"] = li;
-                ViewBag.cart = li.Count();
-                Session["count"] = Convert.ToInt32(Session["count"]) + 1;
-            }
-            return RedirectToAction("Index", "Home");
-            /*
             if (Session["UserName"] != null)
             {
-
+                if (Session["cart"] == null)
+                {
+                    List<BookCart> li = new List<BookCart>();
+                    book.quantity1 = 1;
+                    li.Add(book);
+                    Session["cart"] = li;
+                    ViewBag.cart = li.Count();
+                    Session["count"] = 1;
+                }
+                else
+                {
+                    List<BookCart> li = (List<BookCart>)Session["cart"];
+                    book.quantity1 = 1;
+                    li.Add(book);
+                    Session["cart"] = li;
+                    ViewBag.cart = li.Count();
+                    Session["count"] = Convert.ToInt32(Session["count"]) + 1;
+                }
+                return RedirectToAction("Index", "Home");
             }
             else
             {
                 return RedirectToAction("Log_in", "Account");
-            }*/
+            }
         }
 
         public ActionResult DeleteItem(BookCart item)
