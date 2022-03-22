@@ -12,7 +12,7 @@
     {
 
         @Html.AntiForgeryToken()
-        @Html.ValidationSummary("", new { @class = "text-danger" })
+        @Html.ValidationSummary("", new { @style = "color: red" })
         <div class="header">
             <h2 class="header-login">Add New Author</h2>
         </div>
@@ -22,11 +22,11 @@
             <div class="username-password-items">
                 <p>@Html.LabelFor(m => m.AuthorName, new { @class = "header-input-item" })</p>
                 @Html.TextBoxFor(m => m.AuthorName, new { @class = "input-item" })
-                @Html.ValidationMessageFor(model => model.AuthorName, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.AuthorName, "", new { @style = "color: red" })
 
                 <p>@Html.LabelFor(m => m.Description, new { @class = "header-input-item" })</p>
                 @Html.TextBoxFor(m => m.Description, new { @class = "input-item" })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @style = "color: red" })
             </div>
 
             <div style="margin-bottom:5%;" class="btn-item">
