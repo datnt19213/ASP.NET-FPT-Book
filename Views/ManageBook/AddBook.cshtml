@@ -1,0 +1,80 @@
+﻿@model FPTBookProject.Models.Book
+
+@{
+    ViewBag.Title = "AddBook";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+
+
+<div class="wrapper">
+
+    @using (Html.BeginForm("AddBook", "ManageBook", FormMethod.Post, new { enctype = "multipart/form-data", @class = "login-form", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="header">
+            <h2 class="header-login">Add New Book</h2>
+        </div>
+
+        <div class="login-items">
+
+            <div class="username-password-items">
+
+                <p> @Html.LabelFor(model => model.BookName, htmlAttributes: new { @class = "header-input-item" })</p>
+                @Html.EditorFor(model => model.BookName, new { htmlAttributes = new { @class = "input-item" } })
+                <p class="text-danger">@ViewBag.Error</p>
+                @Html.ValidationMessageFor(model => model.BookName, "", new { @style = "color: red" })
+
+
+
+                <p> @Html.LabelFor(model => model.Img, htmlAttributes: new { @class = "header-input-item" }) </p>
+                <input style="width:100%; margin:5px 0 0 5px" type="file" id="Img" name="Img" />
+                @Html.ValidationMessageFor(model => model.Img, "", new { @style = "color: red" })
+
+
+                <p> @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "header-input-item" })</p>
+                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "input-item" } })
+                @Html.ValidationMessageFor(model => model.Quantity, "", new { @style = "color: red" })
+
+
+                <p>@Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "header-input-item" })</p>
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "input-item" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @style = "color: red" })
+
+
+                <p>  @Html.LabelFor(model => model.CategoryId, "Category", htmlAttributes: new { @class = "header-input-item" }) </p>
+                @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "input-item" })
+                @Html.ValidationMessageFor(model => model.CategoryId, "", new { @style = "color: red" })
+
+
+                <p>  @Html.LabelFor(model => model.AuthorId, "Author's Name", htmlAttributes: new { @class = "header-input-item" })</p>
+                @Html.DropDownList("AuthorId", null, htmlAttributes: new { @class = "input-item" })
+                @Html.ValidationMessageFor(model => model.AuthorId, "", new { @style = "color: red" })
+
+                <p>  @Html.LabelFor(model => model.PublisherId, "Publisher's Name", htmlAttributes: new { @class = "header-input-item" })</p>
+                @Html.DropDownList("PublisherId", null, htmlAttributes: new { @class = "input-item" })
+                @Html.ValidationMessageFor(model => model.PublisherId, "", new { @style = "color: red" })
+
+
+                <p>  @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "header-input-item" })</p>
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "input-item" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @style = "color: red" })
+            </div>
+
+            <div style="margin-bottom:5%;" class="btn-item">
+                <button type="submit" class="submit-btn1">Add New</button>
+                <a href="@Url.Action("Index", "ManageBook")">
+                    <button type="button" class="submit-btn1" style="color: #191919">
+                        Cancel
+                    </button>
+                </a>
+            </div>
+        </div>
+    }
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

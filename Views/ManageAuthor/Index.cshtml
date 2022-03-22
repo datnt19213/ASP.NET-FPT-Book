@@ -1,0 +1,51 @@
+﻿@model IEnumerable<FPTBookProject.Models.Author>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="ad-top">
+    <h2 class="h2 ad-h2">Authors List</h2>
+
+    <button class="submit-btn1">
+        @Html.ActionLink("Add New Author", "AddAuthor", "ManageAuthor", new { style = "text-decoration: none; color: #090909; font-size: 12px;" })
+    </button>
+
+</div>
+
+<table class="ad-table">
+    <thead class="ad-head-table">
+        <tr class="ad-row" style="text-align: center; ">
+            <th class="ad-dt" style="text-align: center;">
+                @Html.DisplayNameFor(model => model.AuthorId)
+            </th>
+            <th class="ad-dt" style="text-align: center;">
+                @Html.DisplayNameFor(model => model.AuthorName)
+            </th>
+            <th class="ad-dt" style="text-align: center;">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th class="ad-dt" style="text-align: center; padding: 0px 30px 0px 30px;"></th>
+        </tr>
+    </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr style="text-align:center;" class="ad-row">
+                <td class="ad-dt">
+                    @Html.DisplayFor(modelItem => item.AuthorId)
+                </td>
+                <td class="ad-dt">
+                    @Html.DisplayFor(modelItem => item.AuthorName)
+                </td>
+                <td class="ad-dt">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td class="ad-dt">
+                    @Html.ActionLink("Edit", "EditAuthor", new { id = item.AuthorId }, new { @style = "color: blue; text-decoration: none;" })
+                    @Html.ActionLink("Delete", "DeleteAuthor", new { id = item.AuthorId }, new { onclick = $"return confirm('Are you sure to detele author:{item.AuthorName}?')", @style = "color: red; text-decoration: none;" })
+                </td>
+            </tr>
+        }
+
+</table>

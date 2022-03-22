@@ -1,0 +1,87 @@
+﻿* {
+    font-family: 'Times New Roman';
+}
+
+.ad-topbar {
+    display: flex;
+    border-bottom: 1px solid gray;
+    margin: 0px 30px 0px 30px;
+    justify-content: space-between;
+}
+
+.ad-logo {
+    margin: 15px 30px 15px 30px;
+}
+
+.ad-logout {
+    display: flex;
+}
+
+.ad-wel {
+    margin-left: 30px;
+    margin-right: 30px;
+    text-decoration: underline;
+}
+
+.ad-logout-item, .ad-wel {
+    font-size: 20px;
+    margin-top: calc(40px - 20px);
+}
+
+.ad-logout-item {
+    color: darkorange;
+}
+
+    .ad-logout-item:hover {
+        text-decoration: underline;
+        color: orange;
+        transition: 0.3s;
+    }
+
+.sidebar {
+    display: block;
+    width: 250px;
+    height: fit-content;
+    background-color: darkorange;
+    margin: 30px 10px 30px 10px;
+    border-right: 1px solid gray;
+    border-radius: 5px;
+    padding: 30px;
+}
+
+.side-link {
+    display: block;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: #050505;
+    border-bottom: 1px dashed #050505;
+}
+
+    .side-link:hover {
+        color: #303030;
+        transition: 0.3s;
+    }
+
+.lb-admin {
+    font-size: 20px;
+    color: #090909;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#ad-nav {
+    display: flex;
+}
+
+.ad-body {
+    display: flex;
+    margin-top: 30px;
+    width: 700px;
+}
+
+.ft-copyright {
+    text-align: center;
+    font-size: 20px;
+    color: gray;
+}

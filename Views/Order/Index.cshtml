@@ -1,0 +1,59 @@
+﻿@model IEnumerable<FPTBookProject.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div>
+    <h2 class="h2 ad-h2">Orders List</h2>
+
+</div>
+
+<table class="ad-table">
+    <thead class="ad-head-table">
+        <tr class="ad-row" style="text-align: center; ">
+            <th class="ad-dt" style="text-align: center;">
+                @Html.DisplayNameFor(model => model.OrderId)
+            </th>
+            <th class="ad-dt" style="text-align: center;">
+                @Html.DisplayNameFor(model => model.Account.FullName)
+            </th>
+            <th class="ad-dt" style="text-align: center;">
+                @Html.DisplayNameFor(model => model.Account.PhoneNumber)
+            </th>
+            <th class="ad-dt" style="text-align: center;">
+                @Html.DisplayNameFor(model => model.TotalPrice)
+            </th>
+            <th class="ad-dt" style="text-align: center;">
+                @Html.DisplayNameFor(model => model.Addressdilivery)
+            </th>
+            <th class="ad-dt" style="text-align: center; padding: 0px 30px 0px 30px;"></th>
+        </tr>
+    </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr style="text-align:center;" class="ad-row">
+                <td class="ad-dt">
+                    @Html.DisplayFor(modelItem => item.OrderId)
+                </td>
+                <td class="ad-dt">
+                    @Html.DisplayFor(modelItem => item.Account.FullName)
+                </td>
+                <td class="ad-dt">
+                    @Html.DisplayFor(modelItem => item.Account.PhoneNumber)
+                </td>
+                <td class="ad-dt">
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+                <td class="ad-dt">
+                    @Html.DisplayFor(modelItem => item.Addressdilivery)
+                </td>
+                <td class="ad-dt">
+                    @Html.ActionLink("Delete", "DeleteOrder", new { id = item.OrderId }, new { onclick = $"return confirm('Are you sure to detele the order of: {item.UserName}?')", @style = "color: red; text-decoration: none;" })
+                </td>
+            </tr>
+        }
+
+</table>

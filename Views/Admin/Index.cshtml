@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Management Panel</h1>
+        <table class="db-table">
+            
+            <tr class="db-row">
+                <td class="db-data">Users account: @ViewBag.TotalUser </td>
+                <td class="db-data">
+                    <a class="db-btn-detail" style="text-decoration: none;" href="@Url.Action("Index","ManageAccount")">Details</a>
+                </td>
+            </tr>
+            
+            
+            <tr class="db-row">
+                <td class="db-data">Revenue: @ViewBag.Revenue,00$</td>
+                <td class="db-data">
+                    <a class="db-btn-detail" style="text-decoration: none;" href="@Url.Action("Index","Order")">Details</a>
+                </td>
+            </tr>
+            
+            
+            <tr class="db-row">
+                <td class="db-data">Orders: @ViewBag.OrderItem </td>
+                <td class="db-data">
+                    <a class="db-btn-detail" style="text-decoration: none;" href="@Url.Action("Index","Order")">Details</a>
+                </td>
+            </tr>
+            
+            
+            <tr class="db-row">
+                <td class="db-data">Books: @ViewBag.TotalBook</td>
+                <td class="db-data">
+                    <a class="db-btn-detail" style="text-decoration: none;" href="@Url.Action("Index","ManageBook")">Details</a>
+                </td>
+            </tr>
+            
+        </table>
+    </div>
+</main>

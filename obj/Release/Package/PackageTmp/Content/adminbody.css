@@ -1,0 +1,63 @@
+﻿.db-table {
+    width: 1000px;
+    justify-content: space-around;
+    margin: 0px 10px 0px 10px;
+}
+
+.db-row {
+    border: 1px solid gray;
+}
+
+.db-data {
+    padding: 15px;
+    border: 1px solid gray;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.db-btn-detail {
+    border: 1px solid gray;
+    padding: 10px;
+    border-radius: 5px;
+    color: darkgoldenrod;
+    margin-left: 30%;
+}
+
+    .db-btn-detail:hover {
+        color: #ff6a00
+    }
+
+
+
+
+
+
+
+.ad-top {
+    display: block;
+    margin: 0px 10px 0px 10px;
+}
+
+.ad-table {
+    display: block;
+    border: 1px solid gray;
+    height: fit-content;
+}
+
+.ad-h2 {
+    display: flex;
+}
+
+.ad-head-table {
+    border-bottom: 1px solid gray;
+    font-size: 20px;
+}
+
+.ad-row {
+    border-bottom: 1px solid gray;
+}
+
+.ad-dt {
+    padding: 0px 15px 0px 15px;
+    font-size: 15px;
+}

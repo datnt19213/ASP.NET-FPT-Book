@@ -1,0 +1,50 @@
+﻿@model IEnumerable<FPTBookProject.Models.Publisher>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="ad-top">
+    <h2 class="h2 ad-h2">Publishers List</h2>
+    <button class="submit-btn1">
+        @Html.ActionLink("Add New Publisher", "AddPublisher", "ManagePublisher", new { style = "text-decoration: none; color: #090909; font-size: 12px;" })
+    </button>
+
+</div>
+<table class="ad-table">
+    <thead class="ad-head-table">
+        <tr class="ad-row" style="text-align: center; ">
+            <th class="ad-dt" style="text-align: center;">
+                @Html.DisplayNameFor(model => model.PublisherId)
+            </th>
+            <th class="ad-dt" style="text-align: center;">
+                @Html.DisplayNameFor(model => model.PublisherName)
+            </th>
+            <th class="ad-dt" style="text-align: center;">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th class="ad-dt" style="text-align: center; padding: 0px 30px 0px 30px;"></th>
+        </tr>
+    </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr style="text-align:center;" class="ad-row">
+                <td class="ad-dt">
+                    @Html.DisplayFor(modelItem => item.PublisherId)
+                </td>
+                <td class="ad-dt">
+                    @Html.DisplayFor(modelItem => item.PublisherName)
+                </td>
+                <td class="ad-dt">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td class="ad-dt">
+                    @Html.ActionLink("Edit", "EditPublisher", new { id = item.PublisherId }, new { @style = "color: blue; text-decoration: none;" })
+                    @Html.ActionLink("Delete", "DeletePublisher", new { id = item.PublisherId }, new { onclick = $"return confirm('Are you sure to detele {item.PublisherName}?')", @style = "color: red; text-decoration: none;" })
+                </td>
+            </tr>
+        }
+
+</table>

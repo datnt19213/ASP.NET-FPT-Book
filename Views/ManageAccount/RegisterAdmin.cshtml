@@ -1,0 +1,71 @@
+﻿@model FPTBookProject.Models.Account
+@{
+    ViewBag.Title = "RegisterAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="wrapper">
+
+    @using (Html.BeginForm("RegisterAdmin", "ManageAccount", FormMethod.Post, new { @class = "login-form", role = "form" }))
+    {
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="header">
+            <h2 class="header-login" style="margin-bottom: 30px;">Register New Account</h2>
+        </div>
+
+        <div class="login-items">
+
+            <div class="username-password-items">
+                <p>@Html.LabelFor(m => m.UserName, new { @class = "header-input-item" })</p>
+                @Html.TextBoxFor(m => m.UserName, new { @class = "input-item" })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @style = "color: red" })
+
+                <p>@Html.LabelFor(m => m.FullName, new { @class = "header-input-item" })</p>
+                @Html.TextBoxFor(m => m.FullName, new { @class = "input-item" })
+                @Html.ValidationMessageFor(model => model.FullName, "", new { @style = "color: red" })
+
+
+                <p>@Html.LabelFor(m => m.Password, new { @class = "header-input-item" })</p>
+                @Html.PasswordFor(m => m.Password, new { @class = "input-item" })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @style = "color: red" })
+
+                <p>@Html.LabelFor(m => m.ConfirmPass, new { @class = "header-input-item" })</p>
+                @Html.PasswordFor(m => m.ConfirmPass, new { @class = "input-item" })
+                @Html.ValidationMessageFor(model => model.ConfirmPass, "", new { @style = "color: red" })
+
+
+                <p>@Html.LabelFor(m => m.PhoneNumber, new { @class = "header-input-item" })</p>
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "input-item" })
+                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @style = "color: red" })
+
+
+                <p>@Html.LabelFor(m => m.Address, new { @class = "header-input-item" })</p>
+                @Html.TextBoxFor(m => m.Address, new { @class = "input-item" })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @style = "color: red" })
+
+
+                <p>@Html.LabelFor(m => m.Email, new { @class = "header-input-item" })</p>
+                @Html.TextBoxFor(m => m.Email, new { @class = "input-item" })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @style = "color: red" })
+
+                <p>@Html.LabelFor(model => model.StatusCode, "Role", new { @class = "header-input-item" })</p>
+                @Html.RadioButtonFor(m => m.StatusCode, "0") <span>Customer</span>
+                @Html.RadioButtonFor(m => m.StatusCode, "1") <span>Admin</span>
+                @Html.ValidationMessageFor(model => model.StatusCode, "", new { @style="color: red" })
+            </div>
+
+            <div style="margin-bottom:5%;" class="btn-item">
+                <button type="submit" class="submit-btn1">Register</button>
+                <a href="@Url.Action("Index", "ManageAccount")">
+                    <button type="button" class="submit-btn1" style="color: #191919">
+                        Cancel
+                    </button>
+                </a>
+            </div>
+        </div>
+
+    }
+</div>

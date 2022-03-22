@@ -1,0 +1,74 @@
+﻿@model IEnumerable<FPTBookProject.Models.Account>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="ad-top">
+    <h2 class="h2 ad-h2">Accounts List</h2>
+    <button class="submit-btn1" >
+        @Html.ActionLink("Add New Account", "RegisterAdmin", "ManageAccount", new { style = "text-decoration: none; color: #090909; font-size: 12px;" })
+    </button>
+</div>
+
+<table class="ad-table">
+    <thead class="ad-head-table" >
+        <tr class="ad-row" style="text-align: center; ">
+            <th class="ad-dt" style="text-align: center;">
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th class="ad-dt" style="text-align: center;">
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th class="ad-dt"  style="text-align: center;">
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th class="ad-dt" style="text-align: center;" >
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th class="ad-dt" style="text-align: center;" >
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th class="ad-dt" style="text-align: center;" >
+                @Html.DisplayNameFor(model => model.StatusCode)
+            </th>
+            <th class="ad-dt"  style="text-align: center; padding: 0px 30px 0px 30px;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style="text-align:center;" class="ad-row">
+                <td class="ad-dt">
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td class="ad-dt">
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td class="ad-dt">
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td class="ad-dt">
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+                <td class="ad-dt">
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td class="ad-dt">
+                    @if (item.StatusCode == 0)
+                    {
+                        @Html.DisplayFor(modelItem => item.StatusCode, "0")<span>- Customer</span>
+                    }
+                    else
+                    {
+                        @Html.DisplayFor(modelItem => item.StatusCode, "1")<span>- Admin</span>
+                    }
+                </td>
+                <td class="ad-dt">
+                    @Html.ActionLink("Edit", "EditAccount", new { userName = item.UserName }, new { @style="color: blue; text-decoration: none;" })
+                    @Html.ActionLink("Delete", "DeleteAccount", new { userName = item.UserName }, new { onclick = $"return confirm('Are you sure to detele {item.UserName}?')", @style = "color: red; text-decoration: none;" })
+                </td>
+            </tr>
+        }
+
+</table>

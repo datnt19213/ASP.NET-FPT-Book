@@ -1,0 +1,51 @@
+﻿@model FPTBookProject.Models.Account
+@{
+    ViewBag.Title = "Log_in";
+
+}
+
+
+@{
+    if (ViewBag.error != null)
+    {
+        <script type="text/javascript">
+            alert('@ViewBag.error');
+        </script>
+    }
+}
+
+
+
+<div class="wrapper">
+    @using (Html.BeginForm("Log_in", "Account", FormMethod.Post, new { @class = "login-form", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="header">
+            <h2 class="header-login">Login</h2>
+        </div>
+        <div class="login-items">
+            <div class="username-password-items">
+                @Html.LabelFor(m => m.UserName, new { @class = "header-input-item" }) <br />
+                @Html.TextBoxFor(m => m.UserName, new { @class = "input-item" }) <br />
+
+
+                @Html.LabelFor(m => m.Password, new { @class = "header-input-item" }) <br />
+                @Html.PasswordFor(m => m.Password, new { @class = "input-item" }) <br />
+            </div>
+            <div style="margin-bottom:5%" class="btn-item" text-decoration: none;>
+                <button type="submit" class="submit-btn1">Login</button>
+                <a href="@Url.Action("Index", "Home")">
+                    <button type="button" class="btn-cal submit-btn1">
+                        @*Html.ActionLink("Cancel", "Index", "Home", new { @class = "btn-cal" })*@
+                        Cancel
+                    </button>
+                </a>
+            
+            </div>
+            <p class="regis-connect">Have you an account? @Html.ActionLink("Create one", "Register", "Account", new { @class = "acc-new" }) ?</p>
+        </div>
+    }
+
+</div>
+
+

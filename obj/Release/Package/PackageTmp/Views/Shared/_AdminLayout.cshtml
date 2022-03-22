@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FPTBookStore Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <link href="~/Content/sidebar.css" rel="stylesheet" />
+    <link href="~/Content/adminbody.css" rel="stylesheet" />
+    <link href="~/Content/indexcss.css" rel="stylesheet" />
+</head>
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+
+
+
+<body>
+    <div class="ad-topbar">
+        <!-- Navbar Brand-->
+        <a href="@Url.Action("Index","Home")" class="ad-logo"><img style="height: 50px;" src="~/Content/images/fptbook logo.png" alt=""></a>
+        <div class="ad-logout">
+            <p class="ad-wel"><img src="~/Content/images/user.png" width="30px" height="30px" style="margin-left: 15px; margin-right: 15px;" /> @Session["UserName"] Logged</p>
+            <a class="ad-logout-item" href="@Url.Action("Log_out","Account")">Logout</a>
+        </div>
+    </div>
+    <div id="ad-nav">
+        <div class="sidebar">
+            <p class="lb-admin">Administrator</p>
+            <a class="side-link" style="text-decoration: none;" href="@Url.Action("Index","Admin")">
+                Management Panel
+            </a>
+            <a class="side-link" style="text-decoration: none;" href="@Url.Action("Index","ManageBook")">
+                Manage Book
+            </a>
+            <a class="side-link" style="text-decoration: none;" href="@Url.Action("Index","ManageAccount")">
+                Manage Account
+            </a>
+            <a class="side-link" style="text-decoration: none;" href="@Url.Action("Index","ManageAuthor")">
+                Manage Author
+            </a>
+            <a class="side-link" style="text-decoration: none;" href="@Url.Action("Index","ManageCategory")">
+                Manage Category
+            </a>
+            <a class="side-link" style="text-decoration: none;" href="@Url.Action("Index","ManagePublisher")">
+                Manage Publisher
+            </a>
+            <a class="side-link" style="text-decoration: none;" href="@Url.Action("Index","Order")">
+                Manage Order
+            </a>
+        </div>
+
+        <div class="ad-body">
+            @RenderBody()
+        </div>
+    </div>
+
+    <footer>
+        <p class="ft-copyright" style="margin: 30px 0px 30px 0px; border-top: 1px solid gray; padding: 30px 0px 30px 0px;"> &copy; @DateTime.Now.Year Copyright FPT Book</p>
+    </footer>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

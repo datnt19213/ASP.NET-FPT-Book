@@ -1,0 +1,124 @@
+﻿@model IEnumerable<FPTBookProject.Models.BookCart>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@{
+    int sum = 0;
+}
+
+
+<style>
+    .cart-container{
+        background-color: white;
+    }
+    .tb-size {
+        width: 100%;
+        border-top: 1px solid gray;
+        border-bottom: 1px solid gray;
+    }
+    .thead-size {
+        margin: 0px 30px 0px 30px;
+    }
+    .tb-row {
+        border: 1px solid gray;
+        background-color: #F4D498;
+    }
+    .tb-body{
+        border-bottom: 1px solid gray;
+    }
+    .cart-del, .btn-order {
+        height: 35px;
+        width: 100px;
+        padding: 10px 15px 10px 15px;
+        border: 1px solid gray;
+        text-align: center;
+        color: blue;
+        background-color: lightgreen;
+        border-radius: 5px;
+    }
+    .btn-order {
+        margin: 30px;
+        padding-top: 5px;
+        box-shadow: 1px 3px 10px 1.5px gray;
+    }
+
+    .cart-del:hover, .btn-order:hover{
+        background-color: lawngreen;
+    }
+</style>
+
+<div class="tour-section">
+    <div class="content-section">
+        <h2 class="content-heading text-white" style="text-align:center; border: 1px solid black;">Cart Page</h2>
+    </div>
+</div>
+<div class="cart-container">
+    <table class="tb-size">
+        <thead class="tb-head" style="text-align:center;">
+        <th class="thead-size">BookID</th>
+        <th class="thead">BookName</th>
+        <th class="thead">Image</th>
+        <th class="thead">Quantity</th>
+        <th class="thead">Price</th>
+        <th class="thead">Edit</th>
+        </thead>
+        <tbody class="tb-body">
+            @foreach (var item in Model)
+            {
+
+                <tr class="tb-row" style="text-align:center;">
+
+                    <td>@Html.DisplayFor(modelItem => item.BookId)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.BookName)</td>
+
+                    <td>
+                        <div class="men-thumb-item" style="width:35%;height:45%; margin-left:30%;">
+                            <img src="~/Content/Book images/@item.Img" width="100px" height="auto" class="img-fluid" alt="@item.BookId">
+                        </div>
+                    </td>
+
+                    <td>  @Html.DisplayFor(modelItem => item.quantity1, new { value = 1 })</td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)<span>,00$</span>
+                    </td>
+
+                    <td>
+                        <a class="cart-del" style="text-decoration: none;" href="@Url.Action("DeleteItem","Cart",item)" , data-book="@item.BookId" onclick="return confirm('Are you sure to detele this book?')">
+                            Delete
+                        </a>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+
+        @foreach (var x in Model)
+        {
+            sum = Convert.ToInt32(x.Price) + sum;
+            Session["sum"] = sum;
+        }
+        <tfoot class="table-light">
+        <td colspan="5" class="table-active" style="text-align:center;">
+            <b>Total Price:</b>
+        </td>
+        <td style="text-align:center;">
+            @sum<span>,00$</span>
+
+        </td>
+        </tfoot>
+    </table>
+
+
+    <div class="mt-2 mb-3 d-flex justify-content-center">
+        <div style="margin-bottom: 10px; display: grid; width:100%;">
+            <a class="btn-order" style="text-decoration: none;" href="@Url.Action("MakeOrder","Cart")">
+                Order
+            </a>
+        </div>
+    </div>
+</div>

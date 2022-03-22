@@ -1,0 +1,43 @@
+﻿@model FPTBookProject.Models.Category
+
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="wrapper">
+
+    @using (Html.BeginForm("AddCategory", "ManageCategory", FormMethod.Post, new { @class = "login-form", role = "form" }))
+    {
+
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @style = "color: red" })
+        <div class="header">
+            <h2 class="header-login">Add New Category</h2>
+        </div>
+
+        <div class="login-items">
+
+            <div class="username-password-items">
+                <p>@Html.LabelFor(m => m.CategoryName, new { @class = "header-input-item" })</p>
+                @Html.TextBoxFor(m => m.CategoryName, new { @class = "input-item" })
+                @Html.ValidationMessageFor(model => model.CategoryName, "", new { @style = "color: red" })
+
+                <p>@Html.LabelFor(m => m.Description, new { @class = "header-input-item" })</p>
+                @Html.TextBoxFor(m => m.Description, new { @class = "input-item" })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @style = "color: red" })
+            </div>
+
+            <div style="margin-bottom:5%;" class="btn-item">
+                <button type="submit" class="submit-btn1">Add</button>
+                <a href="@Url.Action("Index", "ManageCategory")">
+                    <button type="button" class="submit-btn1" style="color: #191919">
+                        Cancel
+                    </button>
+                </a>
+            </div>
+        </div>
+
+    }
+</div>

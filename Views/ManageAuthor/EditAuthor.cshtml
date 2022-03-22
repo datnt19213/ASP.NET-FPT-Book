@@ -1,0 +1,46 @@
+﻿@model FPTBookProject.Models.Author
+
+@{
+    ViewBag.Title = "EditAuthor";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="wrapper">
+
+    @using (Html.BeginForm("EditAuthor", "ManageAuthor", FormMethod.Post, new { @class = "login-form", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="header">
+            <h2 class="header-login">Edit Author's Information</h2>
+        </div>
+
+
+        <div class="login-items">
+
+            <div class="username-password-items">
+                @Html.ValidationSummary(true, "", new { @style = "color: red" })
+                @Html.HiddenFor(model => model.AuthorId)
+
+                <p>@Html.LabelFor(model => model.AuthorName, htmlAttributes: new { @class = "header-input-item" })</p>
+                @Html.EditorFor(model => model.AuthorName, new { htmlAttributes = new { @class = "input-item" } })
+                @Html.ValidationMessageFor(model => model.AuthorName, "", new { @style = "color: red" })
+
+                <div class="username-password-items">
+                    <p>@Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "header-input-item" })</p>
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "input-item" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @style = "color: red" })
+                </div>
+            </div>
+            <div style="margin-bottom:5%;" class="btn-item">
+                <button type="submit" class="submit-btn1">Update</button>
+                <a href="@Url.Action("Index", "ManageAuthor")">
+                    <button type="button" class="submit-btn1" style="color: #191919">
+                        Cancel
+                    </button>
+                </a>
+            </div>
+        </div>
+    }
+
+</div>
